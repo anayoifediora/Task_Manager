@@ -1,0 +1,14 @@
+[
+    {
+        "username": "bukayosaka",
+        "email": "bukayosaka@mail.com",
+        "password": "password12345",
+        "createdAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+        "username": "johnwick",
+        "email": "johnwick@mail.com",
+        "password": "password12345",
+        "createdAt": "2024-09-01T00:00:00.000Z"
+    }
+]

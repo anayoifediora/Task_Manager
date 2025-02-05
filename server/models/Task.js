@@ -16,21 +16,33 @@ const taskSchema = new Schema({
     },
     status: {
         type: String,
+        required: true,
         enum: ['Todo', 'In Progress', 'Completed']
     },
     priority: {
         type: String,
+        required: true,
         enum: ['Low', 'Medium', 'High'],
     },
+    taskAuthor: {
+        type: String,
+        required: true,
+        trim: true
+    },
     dueDate: {
-        type: Date
+        type: Date,
+        required: true,
+        get: (date) => { return date.toDateString()}
     },
     createdAt: {
         type: Date,
-        default: Date.now
+        default: Date.now,
+        get: (date) => { return date.toDateString()}
     },
     updatedAt: {
         type: Date,
+        default: Date.now,
+        get: (date) => { return date.toDateString()}
     }
 },
 {
@@ -38,7 +50,9 @@ const taskSchema = new Schema({
         virtuals: true,
     },
     id: false,
-});
+}
+);
+
 
 const Task = model('Task', taskSchema);
 

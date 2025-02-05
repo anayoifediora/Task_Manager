@@ -1,0 +1,32 @@
+[
+    {
+        "title": "Task 1",
+        "description": "This is the first task",
+        "status": "In Progress",
+        "priority": "High",
+        "taskAuthor": "bukayosaka",
+        "dueDate": "2024-01-01T00:00:00.000Z",
+        "createdAt": "2024-01-01T00:00:00.000Z",
+        "updatedAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+        "title": "Task 2",
+        "description": "This is the second task",
+        "status": "In Progress",
+        "priority": "Medium",
+        "taskAuthor": "johnwick",
+        "dueDate": "2024-01-01T00:00:00.000Z",
+        "createdAt": "2024-01-01T00:00:00.000Z",
+        "updatedAt": "2024-01-01T00:00:00.000Z"
+    },
+    {
+        "title": "Task 3",
+        "description": "This is the third task",
+        "status": "In Progress",
+        "priority": "Low",
+        "taskAuthor": "bukayosaka",
+        "dueDate": "2025-11-13T00:00:00.000Z",
+        "createdAt": "2024-03-01T00:00:00.000Z",
+        "updatedAt": "2024-05-01T00:00:00.000Z"
+    }
+]
