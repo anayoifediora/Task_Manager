@@ -1,0 +1,56 @@
+:root {
+  --prussian-blue: rgb(0, 48, 73);
+  --fire-engine-red: rgb(214, 40, 40);
+  --orange-wheel: rgb(247, 127, 0);
+  --xanthous: rgb(252, 191, 73);
+  --vanilla: rgb(234, 226, 183);
+}
+
+
+h1 {
+  text-align: center;
+  margin: 40px;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.login-page, .signup-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-btn, .signup-btn {
+  margin: 10px;
+  font-size: 20px;
+  border-radius: 5px;
+}
+.login-container, .signup-container {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  align-items: center;
+  margin: 30px;
+  border: 2px solid grey;
+  padding: 10px;
+  background-color: #f0f0f0;
+}
+.custom-login-btn, .custom-signup-btn {
+  margin: 20px;
+  font-size: 20px;
+  border-radius: 5px;
+  background-color: var(--prussian-blue);
+  color: white;
+  padding: 10px;
+}
+.login-form, .signup-form {
+  display: flex;
+  flex-direction: column;
+}
