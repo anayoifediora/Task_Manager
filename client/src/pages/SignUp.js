@@ -9,7 +9,7 @@ import Auth from '../utils/auth';
 
 const SignUp = () => {
 
-    const [formState, setFormState] = useState({ username: " ", email: " ", password: " "})
+    const [formState, setFormState] = useState({ username: " ", email: " ", password: ""})
     const [addUser, { error, data }] = useMutation(ADD_USER);
 
     const handleFormSubmit = async (event) => {
@@ -35,7 +35,7 @@ const SignUp = () => {
         const { name, value } = e.target;
 
         setFormState(
-            { ...formState ,
+            { ...formState,
             [name]: value
             }
         )

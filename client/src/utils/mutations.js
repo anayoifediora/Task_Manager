@@ -26,3 +26,52 @@ export const ADD_USER = gql`
     }
 
 `
+//Mutation to create a task
+export const ADD_TASK = gql`
+
+        mutation Mutation($title: String!, $description: String!, $status: String!, $priority: String!, $taskAuthor: String!, $dueDate: String!) {
+            addTask(title: $title, description: $description, status: $status, priority: $priority, taskAuthor: $taskAuthor, dueDate: $dueDate) {
+                updatedAt
+                title
+                taskAuthor
+                status
+                priority
+                dueDate
+                description
+                createdAt
+                _id
+            }
+    }
+`
+//Mutation to delete a task
+export const DELETE_TASK = gql`
+    mutation RemoveTask($taskId: ID!) {
+        removeTask(taskId: $taskId) {
+            title
+            description
+            _id
+            taskAuthor
+            status
+            priority
+            dueDate
+            updatedAt
+            createdAt
+        }
+    }
+`
+//Mutation to update a task
+export const UPDATE_TASK = gql`
+    mutation Mutation($taskId: ID!, $title: String!, $description: String!, $status: String!, $priority: String!, $dueDate: String!) {
+        updateTask(taskId: $taskId, title: $title, description: $description, status: $status, priority: $priority, dueDate: $dueDate) {
+            title
+            description
+            _id
+            createdAt
+            dueDate
+            priority
+            status
+            taskAuthor
+            updatedAt
+        }
+    }
+`

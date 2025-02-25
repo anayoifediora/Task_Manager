@@ -17,7 +17,7 @@ const typeDefs = `
         description: String,
         status: String,
         priority: String,
-        taskAuthor: String,
+        taskAuthor: String!,
         dueDate: String,
         createdAt: String,
         updatedAt: String
@@ -33,12 +33,13 @@ const typeDefs = `
         users: [User]
         tasks: [Task]
         user(username: String!): User
+        task(taskId: ID!): Task
     }
     
     type Mutation {
         addUser(username: String!, email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
-        addTask(title: String!, description: String!, status: String!, priority: String!, taskAuthor: String!, dueDate: String!): Task
+        addTask(title: String!, description: String!, status: String!, priority: String!, taskAuthor: String!, dueDate: String): Task
         removeTask(taskId: ID!): Task
         updateTask(taskId: ID!, title: String!, description: String!, status: String!, priority: String!, dueDate: String!): Task
     }

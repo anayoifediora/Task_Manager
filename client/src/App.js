@@ -12,6 +12,7 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
+import Taskpage from './pages/Taskpage';
 import './App.css';
 
 const httpLink = createHttpLink({
@@ -54,6 +55,10 @@ function App() {
           <Route
             path="/dashboard"
             element={<Dashboard />}
+          />
+          <Route
+            path="/dashboard/:taskId"
+            element={<Taskpage/>}
           />
 
         </Routes>

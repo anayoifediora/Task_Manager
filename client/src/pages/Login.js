@@ -91,7 +91,7 @@ const Login = () => {
                     </div>
                     )}
                     {error && (
-                        <div className = 'bg-danger text-white'>
+                        <div className =  'alert alert-danger fs-3' role="alert">
                             {error.message}
                         </div>
                     )

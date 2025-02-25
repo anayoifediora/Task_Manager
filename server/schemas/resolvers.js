@@ -1,4 +1,5 @@
-const { ApolloServer, AuthenticationError } = require('@apollo/server');
+const { ApolloServer } = require('@apollo/server');
+const { GraphQLError } = require('graphql') ;
 const { signToken } = require('../utils/auth');
 
 const { User, Task } = require('../models');
@@ -12,6 +13,9 @@ const resolvers = {
         },
         tasks: async () => {
             return await Task.find();
+        },
+        task: async (parent, { taskId }) => {
+            return Task.findOne({ _id: taskId })
         },
         user: async (parent, { username }) => {
             return User.findOne({ username }).populate('tasks');
@@ -36,13 +40,21 @@ const resolvers = {
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
             if(!user) {
-                throw new AuthenticationError('Incorrect Email');
+                throw new GraphQLError('Incorrect Email or Password!', {
+                    extensions: {
+                        code: 'BAD_USER_INPUT',
+                    }
+                });
             }
             //Confirm password is correct
             const correctPassword = await user.isCorrectPassword(password);
 
             if(!correctPassword) {
-                throw new AuthenticationError('Incorrect Password!');
+                throw new GraphQLError('Incorrect Email or Password!', {
+                    extensions: {
+                        code: 'BAD_USER_INPUT',
+                    }
+                });
             }
             const token = signToken(user);
             return { token, user };
