@@ -42,6 +42,7 @@ const Dashboard = () => {
             return "Pending Task"
         }
     } 
+
     return (
         <>
          {Auth.loggedIn() ? (
@@ -75,14 +76,14 @@ const Dashboard = () => {
                             </div>
                             {loading ? (
                                 <div>Loading....</div>
-                            ) : (!tasks.length ? <h4 className="ms-3 mt-3">No tasks yet</h4> : (
+                            ) : (!tasks.length ? <h4 className="ms-3 mt-3">No Pending tasks yet</h4> : (
                                 
                                 tasks.map((task) => (
 
                                     <div key={task._id} className="task">
                                         <p>{(tasks.indexOf(task)) + 1 }</p>
                                         <Link className="single-task-link" to={`/dashboard/${task._id}`}>{task.title}</Link>
-                                        <p>{task.status}</p>
+                                        <p className= "task-status">{task.status}</p>
                                         <p>{task.priority}</p>
                                         <p>{task.createdAt}</p>
                                         <p>{task.dueDate}</p>

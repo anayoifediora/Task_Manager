@@ -31,7 +31,7 @@ const typeDefs = `
     type Query {
         me: User
         users: [User]
-        tasks: [Task]
+        completedTasks(taskAuthor: String): [Task]
         user(username: String!): User
         task(taskId: ID!): Task
     }
@@ -41,7 +41,7 @@ const typeDefs = `
         login(email: String!, password: String!): Auth
         addTask(title: String!, description: String!, status: String!, priority: String!, taskAuthor: String!, dueDate: String): Task
         removeTask(taskId: ID!): Task
-        updateTask(taskId: ID!, title: String!, description: String!, status: String!, priority: String!, dueDate: String!): Task
+        updateTask(taskId: ID!, title: String!, description: String!, status: String!, priority: String!, dueDate: String!, updatedAt: String): Task
     }
 
 `;

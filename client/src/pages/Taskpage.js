@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 
@@ -42,7 +41,7 @@ const Taskpage = () => {
                         <em><label>Description</label></em>
                         <p>{task.description}</p>
                         <hr></hr>
-                        <label>Created by</label>
+                        <em><label>Created by</label></em>
                         <h6>{task.taskAuthor}<span className="ms-2">{task.createdAt}</span></h6>
                         <em><label>Updated</label></em>
                         <p>{task.updatedAt}</p>

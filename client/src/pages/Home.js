@@ -10,7 +10,6 @@ const Home = () => {
             <h1>
                 Welcome to Task Manager!
             </h1>
-
             <div>
                 <Link className="login-btn" to="/login">Login</Link>
                 <Link className="signup-btn" to="/signup">SignUp</Link>

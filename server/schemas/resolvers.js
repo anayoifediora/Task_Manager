@@ -11,14 +11,17 @@ const resolvers = {
         users: async () => {
             return await User.find().populate('tasks');
         },
-        tasks: async () => {
-            return await Task.find();
+        completedTasks: async (parent, { taskAuthor }) => {
+            return await Task.find({ $and: [{ taskAuthor }, {status: "Completed"}] });
         },
         task: async (parent, { taskId }) => {
             return Task.findOne({ _id: taskId })
         },
         user: async (parent, { username }) => {
-            return User.findOne({ username }).populate('tasks');
+            return User.findOne({ username }).populate({
+                path: "tasks",
+                match: { status: ["Todo", "In Progress"]}
+            });
         },
         me: async (parent, args, context) => {
             if (context.user) {
@@ -26,7 +29,7 @@ const resolvers = {
                 return userData;
             }
             console.log('Not logged in');
-        }
+        },
         
     },
     //Set up mutations to handle creating a user, logging a user in, adding, removing and updating a task.
@@ -73,10 +76,10 @@ const resolvers = {
                 { _id: taskId }
             );
         },
-        updateTask: async (parent, { taskId, title, description, status, priority, dueDate }) => {
+        updateTask: async (parent, { taskId, title, description, status, priority, dueDate, updatedAt }) => {
             const updatedTask = await Task.findOneAndUpdate(
                 { _id: taskId },
-                { title, description, status, priority, dueDate },
+                { title, description, status, priority, dueDate, updatedAt },
                 { new: true }
             );
             return updatedTask;

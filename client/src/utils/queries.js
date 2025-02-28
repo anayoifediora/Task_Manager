@@ -35,3 +35,19 @@ export const QUERY_SINGLE_TASK = gql`
     }
 
 `
+
+export const QUERY_COMPLETED_TASK = gql`
+    query Query($taskAuthor: String) {
+        completedTasks(taskAuthor: $taskAuthor) {
+            title
+            description
+            priority
+            status
+            dueDate
+            taskAuthor
+            updatedAt
+            createdAt
+            _id
+        }
+    }
+`

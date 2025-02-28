@@ -31,15 +31,16 @@ const UpdateTaskForm = () => {
             }
             try {
                 const { data, error } = await updateTask({
-                    variables: { ...formState, taskId: taskId },
+                    variables: { ...formState, taskId: taskId, updatedAt: new Date().toDateString() },
                     
                 });
         
             } catch (e) {
                 console.error(e);
             }
-            
             window.location.reload();
+            alert('Successfully updated!')
+
             //clear form values
             setFormState({ 
                 title: " ", 

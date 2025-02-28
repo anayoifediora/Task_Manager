@@ -10,7 +10,7 @@
   font-family: "Lexend Deca", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
-  /* font-style: normal; */
+  font-style: normal;
 }
 
 
@@ -40,6 +40,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 }
 .home {
   display: flex;
@@ -117,11 +118,11 @@ h1 {
   background-color: #f0f0f0;
   height: 100vh;
 }
-.dashboard-view, .task-view {
+.dashboard-view, .task-view, .archive-view {
   display: flex;
   flex-direction: column;
 }
-.dashboard-header, .view-page-header > h2 {
+.dashboard-header, .archive-header, .view-page-header > h2 {
   padding: 25px;
 }
 .view-page-header {
@@ -143,7 +144,14 @@ h1 {
 }
 .task, .task-headers {
   display: grid;
-  grid-template-columns: 5% 20% repeat(6, 1fr);
+  grid-template-columns: 5% 25% 10% 10% repeat(4, 1fr);
+  margin: 15px;
+  padding: 5px;
+  border-bottom: 1px solid var(--prussian-blue);
+}
+.completed-task, .completedtask-headers {
+  display: grid;
+  grid-template-columns: 5% 20% 10% 10% repeat(3, 1fr);
   margin: 15px;
   padding: 5px;
   border-bottom: 1px solid var(--prussian-blue);
