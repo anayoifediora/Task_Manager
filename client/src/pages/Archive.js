@@ -6,7 +6,7 @@ import { QUERY_COMPLETED_TASK } from '../utils/queries';
 
 
 import Auth from '../utils/auth';
-import Header from '../components/Header';
+import Nav from '../components/Nav';
 
 
 //Returns the "Archives" page which displays completed tasks.
@@ -23,13 +23,20 @@ const Archive = () => {
         }
     } 
 
+    const statusStyles = {
+        Todo: { backgroundColor: "green", color: "white"},
+        "In Progress": { backgroundColor: "orange", color: "white" },
+        Completed: { backgroundColor: "green", color: "white" },
+      };
+        
+
     return (
 
         <>
 
         {Auth.loggedIn() ? (
                     <div className = "view-page">
-                        <Header />
+                        <Nav />
                         <div className = "archive-view">
                             <div className="view-page-header">
                                 <h2 className = 'archive-header'>Archives</h2>
@@ -58,11 +65,11 @@ const Archive = () => {
                                             <div key={task._id} className="completed-task">
                                                 <p>{(tasks.indexOf(task)) + 1 }</p>
                                                 <Link className="single-task-link" to={`/dashboard/${task._id}`}>{task.title}</Link>
-                                                <p className= "task-status">{task.status}</p>
+                                                <p className= "task-status" style={{...statusStyles[task.status]}}>{task.status}</p>
                                                 <p>{task.priority}</p>
                                                 <p>{task.createdAt}</p>
                                                 <p>{task.dueDate}</p>
-                                                <p>Date Completed</p>
+                                                <p>{task.updatedAt}</p>
                                                 
                                             </div>
                                             

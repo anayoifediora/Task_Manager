@@ -11,6 +11,7 @@ const UpdateTaskForm = () => {
         const { loading, data } = useQuery(QUERY_SINGLE_TASK, {
             variables: { taskId: taskId }
         })
+    
         const [formState, setFormState] = useState(
             { title: data?.task?.title, 
               description: data?.task?.description, 
@@ -28,6 +29,10 @@ const UpdateTaskForm = () => {
 
             if(!token) {
                 return false;
+            }
+            if(formState.status === "Completed") {
+                alert('Cannot update a completed task!');
+                return;
             }
             try {
                 const { data, error } = await updateTask({

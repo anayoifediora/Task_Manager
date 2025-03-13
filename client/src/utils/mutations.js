@@ -75,3 +75,19 @@ export const UPDATE_TASK = gql`
         }
     }
 `
+//Mutation to mark a task as "complete"
+export const MARK_COMPLETE = gql`
+    mutation Mutation($taskId: ID!, $status: String, $updatedAt: String) {
+        markComplete(taskId: $taskId, status: $status, updatedAt: $updatedAt) {
+            updatedAt
+            title
+            taskAuthor
+            status
+            priority
+            dueDate
+            description
+            createdAt
+            _id
+        }
+    }
+`

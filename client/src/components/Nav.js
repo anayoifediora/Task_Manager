@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Auth from '../utils/auth';
 
 
-const Header = () => {
+const Nav = () => {
     const logout = (event) => {
         event.preventDefault();
         Auth.logout();
@@ -16,17 +16,13 @@ const Header = () => {
             <div className = "navbar">
                 <h2>Task Manager</h2>
                 <ul className="nav">
-                    <li className="nav-item" style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
+                    <li className="nav-item">
                         <i className="bi bi-speedometer2 fs-4" ></i>
-                        <Link className="nav-link active" aria-current="page" to="/dashboard">Dashboard</Link>
+                        <Link className="nav-link" aria-current="page" to="/dashboard">Dashboard</Link>
                     </li>
-                    <li className="nav-item" style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
-                        <i className="bi bi-calendar-check fs-4"></i>
-                        <Link className="nav-link">Calendar</Link>
-                    </li>
-                    <li className="nav-item" style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
+                    <li className="nav-item">
                         <i className="bi bi-archive fs-4" ></i>
-                        <Link className="nav-link" to="/archive" style={{textAlign: "center"}}>Archives</Link>
+                        <Link className="nav-link" to="/archive">Archives</Link>
                     </li>        
                 </ul>
                 
@@ -38,4 +34,4 @@ const Header = () => {
     )
 }
 
-export default Header;
+export default Nav;

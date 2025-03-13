@@ -12,7 +12,7 @@ const resolvers = {
             return await User.find().populate('tasks');
         },
         completedTasks: async (parent, { taskAuthor }) => {
-            return await Task.find({ $and: [{ taskAuthor }, {status: "Completed"}] });
+            return await Task.find({ $and: [{ taskAuthor }, {status: "Completed"}] }).sort({ createdAt: -1 });
         },
         task: async (parent, { taskId }) => {
             return Task.findOne({ _id: taskId })
@@ -20,8 +20,9 @@ const resolvers = {
         user: async (parent, { username }) => {
             return User.findOne({ username }).populate({
                 path: "tasks",
-                match: { status: ["Todo", "In Progress"]}
-            });
+                match: { status: ["Todo", "In Progress"]},
+                // options: { sort: { createdAt: -1 }}
+            })
         },
         me: async (parent, args, context) => {
             if (context.user) {
@@ -83,7 +84,15 @@ const resolvers = {
                 { new: true }
             );
             return updatedTask;
-        }
+        },
+        markComplete: async (parent, { taskId, status, updatedAt}) => {
+            const completedTask = await Task.findOneAndUpdate(
+                { _id: taskId },
+                { status, updatedAt },
+                { new: true }
+            );
+            return completedTask;
+        } 
     }
 }
 

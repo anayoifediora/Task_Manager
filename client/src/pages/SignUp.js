@@ -95,6 +95,8 @@ const SignUp = () => {
                 </form>
             </div>
             )}
+            <Link to="/login">Login</Link>
+            <Link to="/">Back to Home</Link>
         </div>
     )
 }

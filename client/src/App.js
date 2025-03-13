@@ -13,7 +13,7 @@ import Home from './pages/Home';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import Taskpage from './pages/Taskpage';
-import Archive from './pages/Archive'
+import Archive from './pages/Archive';
 import './App.css';
 
 const httpLink = createHttpLink({

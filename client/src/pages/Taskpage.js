@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 
-import Header from '../components/Header';
+import Nav from '../components/Nav';
 import Auth from '../utils/auth';
 import { QUERY_SINGLE_TASK } from '../utils/queries';
 import UpdateTaskForm from '../components/UpdateTaskForm';
@@ -17,9 +17,15 @@ const Taskpage = () => {
     })
     const task = data?.task || {};
     
+    const statusStyles = {
+        Todo: { backgroundColor: "rgb(200, 7, 7)", color: "white" },
+        "In Progress": { backgroundColor: "rgb(220, 151, 24)", color: "white" },
+        Completed: { backgroundColor: "green", color: "white" },
+        
+      };
     return (
         <div className="view-page">
-            <Header/>
+            <Nav/>
             <div className= "task-view">
                 <div className="view-page-header">
                     <h2>Task</h2>
@@ -35,22 +41,24 @@ const Taskpage = () => {
                 ) : (
 
                     <div className="task-details">
-                        <em><label>Title</label></em>
-                        <h4>{task.title}</h4>
+                        <div style={{display: "flex", flexDirection: "row", justifyContent:"space-between"}}>
+                            <label>Title<h4 style={{color: "black"}}>{task.title}</h4></label>
+                            <p className="task-status" style={{...statusStyles[task.status]}}>{task.status}</p>
+                        </div>
+                        
                         <hr></hr>
-                        <em><label>Description</label></em>
+                        <label>Description</label>
                         <p>{task.description}</p>
                         <hr></hr>
-                        <em><label>Created by</label></em>
+                        <label>Created by</label>
                         <h6>{task.taskAuthor}<span className="ms-2">{task.createdAt}</span></h6>
-                        <em><label>Updated</label></em>
+                        <label>Updated</label>
                         <p>{task.updatedAt}</p>
-                        <em><label>Status</label></em>
 
-                        <p>{task.status}</p>
-                        <em><label>Priority</label></em>
+                        
+                        <label>Priority</label>
                         <p>{task.priority}</p>
-                        <em><label>Due Date</label></em>
+                        <label>Due Date</label>
                         <p>{task.dueDate}</p>
                     </div>
                 )}

@@ -42,6 +42,7 @@ const typeDefs = `
         addTask(title: String!, description: String!, status: String!, priority: String!, taskAuthor: String!, dueDate: String): Task
         removeTask(taskId: ID!): Task
         updateTask(taskId: ID!, title: String!, description: String!, status: String!, priority: String!, dueDate: String!, updatedAt: String): Task
+        markComplete(taskId: ID!, status: String, updatedAt: String): Task
     }
 
 `;

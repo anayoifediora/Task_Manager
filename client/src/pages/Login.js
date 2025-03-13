@@ -97,6 +97,8 @@ const Login = () => {
                     )
 
                     }
+                    <Link to="/signup">SignUp</Link>
+                    <Link to="/">Back to Home</Link>
             </div>
              
         
