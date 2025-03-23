@@ -5,12 +5,15 @@
   --xanthous: rgb(252, 191, 73);
   --vanilla: rgb(234, 226, 183);
 }
-
 * {
   font-family: "Lexend Deca", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
+}
+.home {
+  position: relative;
+  top: 250px;
 }
 
 .form-control {
@@ -20,12 +23,24 @@ button, .btn {
   color: var(--vanilla);
   background-color: var(--prussian-blue);
   border-radius: 8px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2), 0px -2px 2px rgba(255, 255, 255, 0.5) inset, 0 2px 2px rgba(255, 255, 255, 0.8) inset;
+  /* box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2), 0px -2px 2px rgba(255, 255, 255, 0.5) inset, 0 2px 2px rgba(255, 255, 255, 0.8) inset; */
 }
+
 button:hover, .btn:hover {
   background-color: var(--vanilla);
   color: var(--prussian-blue);
-  border: 1px solid var(--prussian-blue);
+  border: 2px solid var(--prussian-blue);
+}
+
+.custom-delete-btn, .custom-mark-btn {
+  color: var(--prussian-blue);
+  font-size: 28px;
+  margin-left: 20px;
+}
+.custom-delete-btn:hover, .custom-mark-btn:hover {
+  color: var(--orange-wheel);
+  cursor: pointer;
+  font-size: 30px;
 }
 
 h1 {
@@ -96,6 +111,7 @@ h1 {
   align-items: center;
   background-color: var(--prussian-blue);
   color: var(--vanilla);
+  width: 100%;
 }
 .navbar > h2 {
   text-align: center;
@@ -119,15 +135,18 @@ h1 {
   font-weight: 500;
   text-decoration: underline;
 }
-.nav > li > .nav-link {
+.nav > li > .custom-nav-link {
   margin: 5px;
   color: var(--vanilla);
   font-size: 1.1rem;
   font-weight: 350;
 }
+.nav > li > i {
+  font-size: 1.2rem;
+}
 .view-page {
   display: grid;
-  grid-template-columns: 10% 90%;
+  grid-template-columns: 13% 87%;
   background-color: #f0f0f0;
   height: 100vh;
 }
@@ -163,6 +182,10 @@ h1 {
   border-bottom: 1px solid var(--prussian-blue);
   align-items: center;
 }
+.task-headers > h6, .completedtask-headers > h6 {
+  font-size: 1.1rem;
+  width: 10px;
+}
 .completed-task, .completedtask-headers {
   display: grid;
   grid-template-columns: 5% 20% 10% 10% repeat(3, 1fr);
@@ -171,21 +194,15 @@ h1 {
   border-bottom: 1px solid var(--prussian-blue);
 }
 .task > *, .single-task-link {
-  width: fit-content;
-  align-items: center;
   margin-top: 0;
   margin-bottom: 1rem;
 }
 
-.custom-logout-btn {
-  font-size: 20px;
-  background-color: var(--vanilla);
-  color: var(--prussian-blue);
-  font-weight: bold;
-}
+
 
 .custom-logout-btn:hover {
-  font-size: 23px;
+  cursor: pointer;
+  
 }
 .task-details {
   align-self: center;
@@ -214,4 +231,89 @@ label {
   border-radius: 8px;
   font-weight: 400;
   width: fit-content;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 1200px) {
+  .task, .task-headers {
+    display: grid;
+    grid-template-columns: 5% 22% 12% 10% 15% 15% repeat(2, 1fr);
+    
+  }
+  .completed-task, .completedtask-headers {
+    display: grid;
+    grid-template-columns: 5% 25% 15% 10% 15% 15% 15%;
+  }
+  .view-page {
+    grid-template-columns: 16% 84%;
+  }
+  .tasks-display, .task-headers > h6, .completedtask-headers > h6 {
+    font-size: 0.8rem;
+  }
+  .task > i {
+    font-size: 1rem;
+  }
+  .tasks-display {
+    width: 97%;
+  }
+  .task-details {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .view-page {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+  }
+  .menubar, .navbar, .nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+  }
+  .menubar {
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+  .nav {
+    margin: 20px;
+  }
+  .tasks-display, .task-headers > h6, .completedtask-headers > h6 {
+    font-size: 0.75rem;
+  }
+  .task > i {
+    font-size: 0.9rem;
+  }
+  .task, .task-headers {
+    display: grid;
+    grid-template-columns: 5% 22% 15% 10% 14% 14% repeat(2, 1fr);
+    
+  }
+  .completed-task, .completedtask-headers {
+    display: grid;
+    grid-template-columns: 5% 25% 15% 10% 15% 15% 15%;
+  }
+  .task-details {
+    width: 90%;
+  }
+  .tasks-display > h3 {
+    font-size: 1.35rem;
+  }
+  
+}
+
+@media screen and (max-width: 600px) {
+  .custom-nav-link, .nav-link > i {
+    font-size: 0.5rem;
+  }
+  
+  
 }

@@ -21,7 +21,7 @@ const resolvers = {
             return User.findOne({ username }).populate({
                 path: "tasks",
                 match: { status: ["Todo", "In Progress"]},
-                // options: { sort: { createdAt: -1 }}
+                options: { sort: { createdAt: -1 }}
             })
         },
         me: async (parent, args, context) => {

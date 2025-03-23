@@ -43,7 +43,7 @@ const Taskpage = () => {
                     <div className="task-details">
                         <div style={{display: "flex", flexDirection: "row", justifyContent:"space-between"}}>
                             <label>Title<h4 style={{color: "black"}}>{task.title}</h4></label>
-                            <p className="task-status" style={{...statusStyles[task.status]}}>{task.status}</p>
+                            <h6>Status:  <span className="task-status" style={{...statusStyles[task.status]}}>{task.status}</span></h6>
                         </div>
                         
                         <hr></hr>
@@ -51,7 +51,7 @@ const Taskpage = () => {
                         <p>{task.description}</p>
                         <hr></hr>
                         <label>Created by</label>
-                        <h6>{task.taskAuthor}<span className="ms-2">{task.createdAt}</span></h6>
+                        <h6>{task.taskAuthor}<span className="ms-2">on {task.createdAt}</span></h6>
                         <label>Updated</label>
                         <p>{task.updatedAt}</p>
 
@@ -63,7 +63,7 @@ const Taskpage = () => {
                     </div>
                 )}
             </div>
-            <UpdateTaskForm/>
+            <UpdateTaskForm singleTask={task}/>
         </div>
 
     )

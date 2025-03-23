@@ -47,13 +47,13 @@ const Archive = () => {
                             
                                 <h3 className="m-4" style={{textDecoration: "underline"}}>{tasks.length} {plural(tasks)}</h3>
                                     <div className = "completedtask-headers">
-                                        <h5>No</h5>
-                                        <h5>Title</h5>
-                                        <h5>Status</h5>
-                                        <h5>Priority</h5>
-                                        <h5>Date Created</h5>
-                                        <h5>Due Date</h5>
-                                        <h5>Date Completed</h5>
+                                        <h6>No</h6>
+                                        <h6>Title</h6>
+                                        <h6>Status</h6>
+                                        <h6>Priority</h6>
+                                        <h6>Date Created</h6>
+                                        <h6>Due Date</h6>
+                                        <h6>Date Completed</h6>
                                         
                                     </div>
                                     {loading ? (

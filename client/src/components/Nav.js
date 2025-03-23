@@ -17,19 +17,24 @@ const Nav = () => {
                 <h2>Task Manager</h2>
                 <ul className="nav">
                     <li className="nav-item">
-                        <i className="bi bi-speedometer2 fs-4" ></i>
-                        <Link className="nav-link" aria-current="page" to="/dashboard">Dashboard</Link>
+                        <i className="bi bi-speedometer2" ></i>
+                        <Link className="nav-link custom-nav-link" aria-current="page" to="/dashboard">Dashboard</Link>
                     </li>
                     <li className="nav-item">
-                        <i className="bi bi-archive fs-4" ></i>
-                        <Link className="nav-link" to="/archive">Archives</Link>
-                    </li>        
+                        <i className="bi bi-archive" ></i>
+                        <Link className="nav-link custom-nav-link" to="/archive">Archives</Link>
+                    </li> 
+                    <li className="nav-item custom-logout-btn" onClick={logout}>
+                        <i className="bi bi-box-arrow-left" ></i>
+
+                        <p className="nav-link custom-nav-link" to="/archive">Logout</p>
+                    </li>
+
                 </ul>
                 
             </div>
-            <div className = 'm-3'>
-                <button className="custom-logout-btn m-4 p-2" onClick={logout}>Log out</button>
-            </div>
+            
+            
         </div>
     )
 }

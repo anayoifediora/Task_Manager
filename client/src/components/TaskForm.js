@@ -33,7 +33,7 @@ const TaskForm = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-
+        
         try {
             const { data, error } = await addTask({
                 variables: { ...formState ,

@@ -1,27 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { UPDATE_TASK } from '../utils/mutations';
 import { QUERY_SINGLE_TASK } from '../utils/queries';
 import { useMutation, useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import Auth from '../utils/auth';
 
-const UpdateTaskForm = () => {
+const UpdateTaskForm = (props) => {
+        const [updateTask] = useMutation(UPDATE_TASK);
         
         const { taskId } = useParams();
-        const { loading, data } = useQuery(QUERY_SINGLE_TASK, {
-            variables: { taskId: taskId }
-        })
-    
+        
         const [formState, setFormState] = useState(
-            { title: data?.task?.title, 
-              description: data?.task?.description, 
-              priority: data?.task?.priority, 
-              status: data?.task?.status, 
-              dueDate: data?.task?.dueDate
+            { title: '',
+              description: '',
+              priority: '',
+              status: '',
+              dueDate: ''
             }
         );
-        const [updateTask] = useMutation(UPDATE_TASK);
-
+        //useEffect is updating the state when "props.singleTask" changes.
+        useEffect(() => {
+            if (props.singleTask) {
+                setFormState({
+                    title: props.singleTask.title || " ",
+                    description: props.singleTask.description || " ",
+                    priority: props.singleTask.priority || " ",
+                    status: props.singleTask.status || " ",
+                    dueDate: props.singleTask.dueDate || " "
+                });
+            }
+        }, [props.singleTask])
 
         const handleFormSubmit = async (event) => {
             event.preventDefault();
