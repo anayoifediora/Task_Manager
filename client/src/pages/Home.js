@@ -11,8 +11,8 @@ const Home = () => {
                 Welcome to Task Manager!
             </h1>
             <div>
-                <Link className="login-btn" to="/login">Login</Link>
-                <Link className="signup-btn" to="/signup">SignUp</Link>
+                <Link className="login-btn fw-bolder" to="/login">Login</Link>
+                <Link className="signup-btn fw-bolder" to="/signup">SignUp</Link>
             </div>
         
         </div>

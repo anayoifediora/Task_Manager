@@ -62,7 +62,7 @@ const Login = () => {
                         
                         <form className="login-form" onSubmit={handleFormSubmit}>
                             <div className="m-3">
-                                <label for="email" className="form-label">Email address</label>
+                                <label htmlFor="email" className="form-label">Email address</label>
                                 <input 
                                     type="email" 
                                     name="email"
@@ -75,7 +75,7 @@ const Login = () => {
                                 <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                             </div>
                             <div className="m-3">
-                                <label for="password" className="form-label">Password</label>
+                                <label htmlFor="password" className="form-label">Password</label>
                                 <input 
                                     type="password"
                                     name="password" 

@@ -11,12 +11,15 @@ const resolvers = {
         users: async () => {
             return await User.find().populate('tasks');
         },
+        //Return all tasks marked "completed"
         completedTasks: async (parent, { taskAuthor }) => {
             return await Task.find({ $and: [{ taskAuthor }, {status: "Completed"}] }).sort({ createdAt: -1 });
         },
+        //Fetches a single task
         task: async (parent, { taskId }) => {
             return Task.findOne({ _id: taskId })
         },
+        // Request to GET a single user, including the associated tasks not completed, sorted by "newest first".
         user: async (parent, { username }) => {
             return User.findOne({ username }).populate({
                 path: "tasks",
@@ -24,6 +27,7 @@ const resolvers = {
                 options: { sort: { createdAt: -1 }}
             })
         },
+        //Request to GET a loggedin User
         me: async (parent, args, context) => {
             if (context.user) {
                 const userData = await User.findOne({ _id: context.user._id }).populate('tasks');
@@ -35,12 +39,14 @@ const resolvers = {
     },
     //Set up mutations to handle creating a user, logging a user in, adding, removing and updating a task.
     Mutation: {
+        //Registers a new user 
         addUser: async (parent, { username, email, password}) => {
             const user = await User.create({ username, email, password});
             const token = signToken(user);
 
             return { token, user };
         },
+        //Logs in a user by checking email and password
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
             if(!user) {
@@ -63,6 +69,7 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
+        //Creates a new task and updates the task's author to include the task in their list
         addTask: async (parent, { title, description, status, priority, taskAuthor, dueDate, }) => {
             const task = await Task.create({ title, description, status, priority, taskAuthor, dueDate });
                 await User.findOneAndUpdate(

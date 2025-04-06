@@ -14,7 +14,7 @@ const Nav = () => {
     return (
         <div className='menubar'>
             <div className = "navbar">
-                <h2>Task Manager</h2>
+                <h1>Task Manager</h1>
                 <ul className="nav">
                     <li className="nav-item">
                         <i className="bi bi-speedometer2" ></i>

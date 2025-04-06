@@ -11,11 +11,21 @@
   font-weight: 300;
   font-style: normal;
 }
-.home {
-  position: relative;
-  top: 250px;
+.home  {
+  background-image: url('../public/TaskManager\ Logo.png');
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  opacity: 0.9;
+  
 }
-
+.home > h1 {
+  font-size: 3rem;
+  color: var(--orange-wheel);
+  text-align: center;
+  margin-top: 15%;
+  
+}
 .form-control {
   font-weight: 250;
 }
@@ -113,7 +123,7 @@ h1 {
   color: var(--vanilla);
   width: 100%;
 }
-.navbar > h2 {
+.navbar > h1 {
   text-align: center;
   text-wrap: wrap;
   margin: 20px;
@@ -144,6 +154,7 @@ h1 {
 .nav > li > i {
   font-size: 1.2rem;
 }
+
 .view-page {
   display: grid;
   grid-template-columns: 13% 87%;
@@ -156,15 +167,24 @@ h1 {
 }
 .dashboard-header, .archive-header, .view-page-header > h2 {
   padding: 25px;
+  color: black;
 }
 .view-page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: white;
-  color: var(--orange-wheel);
+  background-image: url('../public/TaskManager\ Logo.png');
+  opacity: 2.0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: var(--prussian-blue);
   border-bottom: 1px solid grey;
+}
+.view-page-header > h4 {
+  padding-right: 3rem;
+  color: black;
 }
 .tasks-display {
   margin: 25px;
@@ -173,6 +193,11 @@ h1 {
   width: 90%;
   align-self: center;
   padding: 15px;
+}
+.character-count {
+  font-size: 0.8rem;
+  font-style: italic;
+  margin: 0.2rem;
 }
 .task, .task-headers {
   display: grid;
@@ -223,17 +248,45 @@ h1 {
   align-self: center;
 }
 label {
-  font-style: italic;
+  /* font-style: italic; */
   color: red;
+  font-weight: 250;
 }
 .task-status {
   padding: 7px;
   border-radius: 8px;
   font-weight: 400;
   width: fit-content;
+  margin-left: 4px;
 }
 
 /* Media Queries */
+@media screen and (max-width: 1600px) {
+  .task, .task-headers {
+    display: grid;
+    grid-template-columns: 5% 22% 12% 10% 15% 15% repeat(2, 1fr);
+    
+  }
+  .completed-task, .completedtask-headers {
+    display: grid;
+    grid-template-columns: 5% 25% 15% 10% 15% 15% 15%;
+  }
+  .view-page {
+    grid-template-columns: 17% 83%;
+  }
+  .tasks-display, .task-headers > h6, .completedtask-headers > h6 {
+    font-size: 0.9rem;
+  }
+  .task > i {
+    font-size: 1.1rem;
+  }
+  .tasks-display {
+    width: 97%;
+  }
+  .task-details {
+    width: 70%;
+  }
+}
 
 @media screen and (max-width: 1200px) {
   .task, .task-headers {
@@ -246,7 +299,7 @@ label {
     grid-template-columns: 5% 25% 15% 10% 15% 15% 15%;
   }
   .view-page {
-    grid-template-columns: 16% 84%;
+    grid-template-columns: 18% 82%;
   }
   .tasks-display, .task-headers > h6, .completedtask-headers > h6 {
     font-size: 0.8rem;
@@ -307,13 +360,49 @@ label {
   .tasks-display > h3 {
     font-size: 1.35rem;
   }
+  .view-page-header > * {
+    font-size: 1.2rem;
+  }
   
 }
 
 @media screen and (max-width: 600px) {
-  .custom-nav-link, .nav-link > i {
-    font-size: 0.5rem;
+  .navbar {
+    justify-content: center;
   }
-  
-  
+  .nav > li > .custom-nav-link {
+    font-size: 0.9rem;
+  }
+  h2, h4 {
+    font-size: 0.9rem;
+  }
+  .custom-new-task-btn {
+    font-size: 0.8rem;
+  }
+  .view-page-header > h2 {
+    padding: 5px;
+    
+  }
+  .view-page-header > h4 {
+    padding-right: 1rem;
+
+  }
+  .tasks-display, .task-headers > h6, .completedtask-headers > h6 {
+    font-size: 0.42rem;
+  }
+  .tasks-display > h3 {
+    font-size: 0.9rem;
+  }
+  .view-page-header > * {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 407px) {
+  .menubar, .navbar, .nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

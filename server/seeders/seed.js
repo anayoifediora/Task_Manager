@@ -11,15 +11,6 @@ db.once('open', async () => {
         await User.create(userSeeds);
         await Task.create(taskSeeds);
         
-        // for (let i = 0; i < taskSeeds.length; i++) {
-        //     const { _id, taskAuthor } = await Task.create(taskSeeds[i]);
-
-        //     const user = await User.findOneAndUpdate(
-        //         { username: taskAuthor },
-        //         { $addToSet: { tasks: _id }},
-        //         { new: true }
-        //     )
-        // }
 
         
     } catch (err) {

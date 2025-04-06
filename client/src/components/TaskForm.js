@@ -86,7 +86,8 @@ const TaskForm = () => {
                                 <input name="title" onChange = {handleInputChange} value={formState.title}type="title" className="form-control" id="title" placeholder="Add title here...."/>
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="description" className="form-label">* Description</label>
+                                <label htmlFor="description" className="form-label">* Description </label>
+                                <p className = 'character-count'>Character count: {formState.description.length} / 5800</p>
                                 <textarea name="description" onChange = {handleInputChange} value={formState.description} className="form-control" id="description" rows="3"></textarea>
                             </div>
                             <div className="mb-3 d-flex">

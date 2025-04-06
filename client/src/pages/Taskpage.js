@@ -43,7 +43,7 @@ const Taskpage = () => {
                     <div className="task-details">
                         <div style={{display: "flex", flexDirection: "row", justifyContent:"space-between"}}>
                             <label>Title<h4 style={{color: "black"}}>{task.title}</h4></label>
-                            <h6>Status:  <span className="task-status" style={{...statusStyles[task.status]}}>{task.status}</span></h6>
+                            <h6>Status: <span className="task-status" style={{...statusStyles[task.status]}}>{task.status}</span></h6>
                         </div>
                         
                         <hr></hr>

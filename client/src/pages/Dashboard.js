@@ -81,7 +81,7 @@ const Dashboard = () => {
                 <div className = "dashboard-view">
                     <div className="view-page-header">
                         <h2 className = 'dashboard-header'>Dashboard</h2>
-                        <h4 className="pe-5">Welcome {Auth.getProfile().data.username}!</h4>
+                        <h4>Welcome {Auth.getProfile().data.username}!</h4>
                     </div>
                     <button 
                         className="custom-new-task-btn "
