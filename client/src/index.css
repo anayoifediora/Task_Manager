@@ -40,17 +40,19 @@ button:hover, .btn:hover {
   background-color: var(--vanilla);
   color: var(--prussian-blue);
   border: 2px solid var(--prussian-blue);
+  cursor: pointer;
 }
 
 .custom-delete-btn, .custom-mark-btn {
   color: var(--prussian-blue);
   font-size: 28px;
-  margin-left: 20px;
+  /* margin-left: 20px; */
+  width: fit-content;
 }
 .custom-delete-btn:hover, .custom-mark-btn:hover {
   color: var(--orange-wheel);
   cursor: pointer;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 h1 {
@@ -167,7 +169,7 @@ h1 {
 }
 .dashboard-header, .archive-header, .view-page-header > h2 {
   padding: 25px;
-  color: black;
+  color: var(--fire-engine-red);
 }
 .view-page-header {
   display: flex;
@@ -175,16 +177,16 @@ h1 {
   align-items: center;
   padding: 20px;
   background-image: url('../public/TaskManager\ Logo.png');
-  opacity: 2.0;
+  opacity: 0.9;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  color: var(--prussian-blue);
+  color: var(--fire-engine-red);
   border-bottom: 1px solid grey;
 }
 .view-page-header > h4 {
   padding-right: 3rem;
-  color: black;
+  color: var(--fire-engine-red);
 }
 .tasks-display {
   margin: 25px;
@@ -201,7 +203,7 @@ h1 {
 }
 .task, .task-headers {
   display: grid;
-  grid-template-columns: 5% 25% 10% 10% repeat(4, 1fr);
+  grid-template-columns: 5% 22% 11% 11% 16% 16% 10% 10%;
   margin: 15px;
   padding: 5px;
   border-bottom: 1px solid var(--prussian-blue);
@@ -258,6 +260,14 @@ label {
   font-weight: 400;
   width: fit-content;
   margin-left: 4px;
+}
+
+.nav-link,
+.task > i,
+.btn,
+.delete,
+.toggle-read {
+  cursor: pointer;
 }
 
 /* Media Queries */
@@ -348,6 +358,7 @@ label {
   .task, .task-headers {
     display: grid;
     grid-template-columns: 5% 22% 15% 10% 14% 14% repeat(2, 1fr);
+    font-size: 0.7rem;
     
   }
   .completed-task, .completedtask-headers {
@@ -396,6 +407,9 @@ label {
   .view-page-header > * {
     font-size: 1rem;
   }
+  .task {
+    font-size: 0.45rem;
+  }
 }
 
 @media screen and (max-width: 407px) {
@@ -404,5 +418,20 @@ label {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  .tasks-display {
+    margin: 0;
+    padding: 0;
+  }
+  .single-task-link {
+    width: min-content;
+  }
+  .task, .task-headers {
+    display: grid;
+    grid-template-columns: 5% 17% 15% 12% 15% 15% repeat(2, 1fr);  
+  }
+  .task-status {
+    margin-right: 5px;
+    padding: 4px;
   }
 }

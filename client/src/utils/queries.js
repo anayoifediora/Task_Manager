@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
 
+//Query to fetch a single user
 export const QUERY_SINGLE_USER = gql`
     query Query($username: String!) {
         user(username: $username) {
@@ -18,7 +19,7 @@ export const QUERY_SINGLE_USER = gql`
     }
 
 `
-
+//Query to get a single task
 export const QUERY_SINGLE_TASK = gql`
     query Query($taskId: ID!) {
         task(taskId: $taskId) {

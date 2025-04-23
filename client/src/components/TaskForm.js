@@ -60,7 +60,9 @@ const TaskForm = () => {
         const { name, value } = e.target;
 
         setFormState({
+            //This spreads the current state object (copying existing values)
             ...formState,
+            //Updates the specific key with the new value typed by the user
             [name]: value,
         })
     }

@@ -79,11 +79,13 @@ const resolvers = {
                 )
             return task;
         },
+        //Deletes a task by id
         removeTask: async (parent, { taskId }) => {
             return Task.findOneAndDelete(
                 { _id: taskId }
             );
         },
+        //Updates a task
         updateTask: async (parent, { taskId, title, description, status, priority, dueDate, updatedAt }) => {
             const updatedTask = await Task.findOneAndUpdate(
                 { _id: taskId },
@@ -92,6 +94,7 @@ const resolvers = {
             );
             return updatedTask;
         },
+        //Updates the task status to "completed"
         markComplete: async (parent, { taskId, status, updatedAt}) => {
             const completedTask = await Task.findOneAndUpdate(
                 { _id: taskId },

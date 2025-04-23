@@ -17,7 +17,7 @@ const Dashboard = () => {
     });
 
     const tasks = data?.user?.tasks || [];
-    const [deleteTask, error] = useMutation(DELETE_TASK);
+    const [deleteTask] = useMutation(DELETE_TASK);
     const [completeTask] = useMutation(MARK_COMPLETE);
     
     //This function handles the delete task event
@@ -101,7 +101,7 @@ const Dashboard = () => {
                                 <h6>Priority</h6>
                                 <h6>Date Created</h6>
                                 <h6>Due Date</h6>
-                                <h6>Mark Completed</h6>
+                                <h6>Mark Done</h6>
                                 <h6>Delete</h6>
                             </div>
                             {loading ? (
@@ -121,7 +121,7 @@ const Dashboard = () => {
                                 
                                             id={task._id}
                                             onClick={handleMarkComplete}
-                                            className="custom-mark-btn bi bi-check2-square"
+                                            className="custom-mark-btn bi bi-check-square-fill"
                                         >
                                             
                                         </i>
@@ -129,7 +129,7 @@ const Dashboard = () => {
                                 
                                             data-bs-toggle="modal"
                                             data-bs-target={`#deleteTaskModal-${task._id}`}
-                                            className='custom-delete-btn bi bi-x-square'
+                                            className='custom-delete-btn bi bi-trash'
                                         ></i>
                                             
                                         <div className="modal fade" id={`deleteTaskModal-${task._id}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
