@@ -11,10 +11,13 @@ import Nav from '../components/Nav';
 
 //Returns the "Archives" page which displays completed tasks.
 const Archive = () => {
+    //Query to fetch the completed tasks
     const { loading, data } = useQuery(QUERY_COMPLETED_TASK, {
         variables: { taskAuthor: Auth.getProfile().data.username }
     })
     const tasks = data?.completedTasks || [];
+
+    //Function that enables rendition of "tasks" if the task is greater than 1
     const plural = (arr) => {
         if (arr.length > 1 ) {
             return "Completed Tasks"
@@ -22,7 +25,7 @@ const Archive = () => {
             return "Completed Task"
         }
     } 
-
+    //Color styles for status labels
     const statusStyles = {
         Todo: { backgroundColor: "green", color: "white"},
         "In Progress": { backgroundColor: "orange", color: "white" },
@@ -38,15 +41,17 @@ const Archive = () => {
                     <div className = "view-page">
                         <Nav />
                         <div className = "archive-view">
+                            {/* Header section */}
                             <div className="view-page-header">
                                 <h2 className = 'archive-header'>Archives</h2>
                                 <h4 className="pe-5">Welcome {Auth.getProfile().data.username}!</h4>
                             </div>
-                            
+                            {/* Archived tasks display */}
                             <div className="tasks-display">
                             
                                 <h3 className="m-4" style={{textDecoration: "underline"}}>{tasks.length} {plural(tasks)}</h3>
                                     <div className = "completedtask-headers">
+                                    {/* Table headers */}
                                         <h6>No</h6>
                                         <h6>Title</h6>
                                         <h6>Status</h6>

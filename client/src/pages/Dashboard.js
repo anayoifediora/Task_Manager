@@ -4,14 +4,14 @@ import { DELETE_TASK, MARK_COMPLETE } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { useQuery, useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
-// import { MARK_COMPLETE } from '../utils/mutations';
+
 
 import Nav from '../components/Nav'
 import TaskForm from '../components/TaskForm';
 
 const Dashboard = () => {
     
-    
+    // Query to fetch the logged-in user's tasks
     const { loading, data } = useQuery(QUERY_SINGLE_USER, {
         variables: { username: Auth.getProfile().data.username },
     });
@@ -36,7 +36,7 @@ const Dashboard = () => {
         } catch (err) {
             console.error(err);
         }
-        // alert('Task deleted!');
+        
         //reload the page after deleting a task
         window.location.reload("/dashboard");
     }
@@ -57,7 +57,7 @@ const Dashboard = () => {
         //reload the page after marking a task "complete"
         window.location.reload("/dashboard");
     }
-    
+    //Function that enables rendition of "tasks" if the task is greater than 1
     const plural = (arr) => {
         if (arr.length > 1 ) {
             return "Pending Tasks"
@@ -65,6 +65,7 @@ const Dashboard = () => {
             return "Pending Task"
         }
     } 
+    //Color styles for status labels
     const statusStyles = {
         Todo: { backgroundColor: "rgb(200, 7, 7)", color: "white" },
         "In Progress": { backgroundColor: "rgb(220, 151, 24)", color: "white" },
@@ -79,10 +80,12 @@ const Dashboard = () => {
             <div className = "view-page">
                 <Nav />
                 <div className = "dashboard-view">
+                    {/* Header section */}
                     <div className="view-page-header">
                         <h2 className = 'dashboard-header'>Dashboard</h2>
                         <h4>Welcome {Auth.getProfile().data.username}!</h4>
                     </div>
+                    {/* New task button */}
                     <button 
                         className="custom-new-task-btn "
                         type="button"
@@ -91,9 +94,11 @@ const Dashboard = () => {
                     >
                         + Create Task
                     </button>
+                    {/* Tasks display */}
                     <div className="tasks-display">
                     
                         <h3 className="m-4" style={{textDecoration: "underline"}}>{tasks.length} {plural(tasks)}</h3>
+                        {/* Table headers */}
                             <div className = "task-headers">
                                 <h6>No.</h6>
                                 <h6>Title</h6>
@@ -117,6 +122,7 @@ const Dashboard = () => {
                                         <p>{task.priority}</p>
                                         <p>{task.createdAt}</p>
                                         <p>{task.dueDate}</p>
+                                        {/* "Mark Complete" button */}
                                         <i 
                                 
                                             id={task._id}
@@ -125,13 +131,14 @@ const Dashboard = () => {
                                         >
                                             
                                         </i>
+                                        {/* Delete button that triggers modal */}
                                         <i 
                                 
                                             data-bs-toggle="modal"
                                             data-bs-target={`#deleteTaskModal-${task._id}`}
                                             className='custom-delete-btn bi bi-trash'
                                         ></i>
-                                            
+                                          {/* Modal for confirming task deletion */}  
                                         <div className="modal fade" id={`deleteTaskModal-${task._id}`} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div className="modal-dialog">
                                                 <div className="modal-content">
@@ -156,6 +163,7 @@ const Dashboard = () => {
                             ))}
                     </div>
                 </div>
+                {/* Modal form for the creation of a new task */}
                 <TaskForm/>
             </div>
          ) : (
